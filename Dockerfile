@@ -29,9 +29,12 @@ RUN tap package install Demonstration
 # in the host's project file before trying to create this image:
 COPY iolibrariessuite-installer_20_0_26913_1.run keysightiolib.run
 RUN chmod +x keysightiolib.run
-#RUN ping 8.8.8.8
 
-# this command fails with the error
+# this is needed for ks libs
+RUN apt-get install lsb-core -y
+
+# this command can fail with the error
 # "This device is not connected to the network"
-#RUN ./keysightiolib.run --mode unattended
+# if the container cannot get out to the internet
+RUN ./keysightiolib.run --mode unattended
 
