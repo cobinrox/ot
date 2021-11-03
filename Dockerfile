@@ -5,7 +5,7 @@ RUN  apt-get  update -y \
   && apt-get install net-tools -y
 CMD ["bash"]
 RUN apt update
-RUN apt upgrade -y  
+RUN apt upgrade -y
 RUN apt install -y wget
 RUN wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
 RUN dpkg -i packages-microsoft-prod.deb
@@ -25,8 +25,13 @@ ENV PATH=$PATH:/opt/tap
 # RUN tap package list -v
 RUN tap package install TUI --version any
 RUN tap package install Demonstration
+# Make sure you have downloaded this file from keysight and that it exists
+# in the host's project file before trying to create this image:
 COPY iolibrariessuite-installer_20_0_26913_1.run keysightiolib.run
 RUN chmod +x keysightiolib.run
 #RUN ping 8.8.8.8
-RUN ./keysightiolib.run --mode unattended
+
+# this command fails with the error
+# "This device is not connected to the network"
+#RUN ./keysightiolib.run --mode unattended
 
