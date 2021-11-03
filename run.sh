@@ -4,8 +4,8 @@
 
 
 # remove the container if it is or was already running
-docker rm -f ot > > /dev/null 2>&1
+docker rm -f ot > /dev/null 2>&1
 
 # run the "ot" image and give resulting container
 # a name of "ot"
-docker run -it --name ot ot
+docker run -it --network host --name ot ot
