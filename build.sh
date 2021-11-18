@@ -6,4 +6,4 @@ docker container rm -f ot > /dev/null 2>&1
 docker image rm -f ot > /dev/null 2>&1
 
 # create the image anew, give it a name of "ot"
-docker build -t ot .
+docker build --network host -t ot . 

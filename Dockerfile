@@ -36,5 +36,9 @@ RUN apt-get install lsb-core -y
 # this command can fail with the error
 # "This device is not connected to the network"
 # if the container cannot get out to the internet
-RUN ./keysightiolib.run --mode unattended
+# It *might not* hang if you add the --enable-debugger flag?
+RUN ./keysightiolib.run --mode unattended --enable-debugger
+
+# add a soft link to the Keysight VISA library in the OpenTAP directory
+RUN ln -s /opt/keysight/iolibs/libktvisa32.so /opt/tap/libvisa.so
 
