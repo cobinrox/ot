@@ -1,4 +1,4 @@
-# ot
+# ot Research Project v0.2
 Attempt to build ubuntu container/w:
 - network tools such as ping
 - opentap
